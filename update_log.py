@@ -12,7 +12,11 @@ for img in entries:
     if img.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
         date = datetime.now().strftime('%Y-%m-%d')
         caption = img.replace('_', ' ').rsplit('.', 1)[0].capitalize()
-        log_lines.append(f"## {date}\n![{caption}](screenshots/{img})\n**{caption}**\n")
+        from urllib.parse import quote
+        
+img_url = quote(f"{SCREENSHOT_DIR}/{img}")
+log_lines.append(f"## {date}\n![{caption}]({img_url})\n**{caption}**\n")
+
 
 # Write to README
 with open(README_PATH, 'w') as f:

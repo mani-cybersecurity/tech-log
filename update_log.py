@@ -13,9 +13,8 @@ for img in entries:
         date = datetime.now().strftime('%Y-%m-%d')
         caption = img.replace('_', ' ').rsplit('.', 1)[0].capitalize()
         from urllib.parse import quote
-        
-img_url = quote(f"{SCREENSHOT_DIR}/{img}")
-log_lines.append(f"## {date}\n![{caption}]({img_url})\n**{caption}**\n")
+        img_url = quote(f"{SCREENSHOT_DIR}/{img}")
+        log_lines.append(f"## {date}\n![{caption}]({img_url})\n**{caption}**\n")
 
 
 # Write to README
